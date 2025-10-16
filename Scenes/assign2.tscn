@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://uiucytcogtav"]
 
-[ext_resource type="Script" uid="uid://dvxkudpe77ap6" path="res://root.gd" id="1_1nr1s"]
-[ext_resource type="Script" uid="uid://bscu1xnw4u1ie" path="res://xr_origin_script.gd" id="1_aaw2x"]
-[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="1_fhqvh"]
-[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="2_58r8u"]
-[ext_resource type="Material" uid="uid://db0byh3xxnml5" path="res://Colors/Floor.tres" id="3_58r8u"]
-[ext_resource type="PackedScene" uid="uid://be5cpsju4t80a" path="res://laser_sword.tscn" id="3_a8gxl"]
-[ext_resource type="Script" uid="uid://clcfw6tu2pent" path="res://cube_spawner.gd" id="7_4ovgj"]
-[ext_resource type="PackedScene" uid="uid://c8rxjqoyioci1" path="res://Cube.tscn" id="8_1urvp"]
-[ext_resource type="Script" uid="uid://bulgdk25y6kaw" path="res://kill_zone.gd" id="9_ldj3p"]
+[ext_resource type="Script" uid="uid://dvxkudpe77ap6" path="res://Scripts/root.gd" id="1_pdx06"]
+[ext_resource type="Script" uid="uid://bscu1xnw4u1ie" path="res://Scripts/xr_origin_script.gd" id="2_fekub"]
+[ext_resource type="PackedScene" uid="uid://be5cpsju4t80a" path="res://Scenes/laser_sword.tscn" id="3_eflmq"]
+[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="4_hh81q"]
+[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="5_57bjk"]
+[ext_resource type="Material" uid="uid://db0byh3xxnml5" path="res://Colors/Floor.tres" id="6_llgbv"]
+[ext_resource type="Script" uid="uid://clcfw6tu2pent" path="res://Scripts/cube_spawner.gd" id="7_28dp7"]
+[ext_resource type="PackedScene" uid="uid://c8rxjqoyioci1" path="res://Scenes/Cube.tscn" id="8_0r0k0"]
+[ext_resource type="Script" uid="uid://bulgdk25y6kaw" path="res://Scripts/kill_zone.gd" id="9_x7ri8"]
 
 [sub_resource type="Environment" id="Environment_i7o7x"]
 
@@ -20,10 +20,10 @@
 size = Vector3(10, 31.6176, 1)
 
 [node name="XRScene" type="Node3D"]
-script = ExtResource("1_1nr1s")
+script = ExtResource("1_pdx06")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." node_paths=PackedStringArray("left_sword", "right_sword", "player_camera")]
-script = ExtResource("1_aaw2x")
+script = ExtResource("2_fekub")
 left_sword = NodePath("Left_Controller/LaserSword")
 right_sword = NodePath("Right_Controller/LaserSword")
 player_camera = NodePath("XRCamera3D")
@@ -35,20 +35,20 @@ transform = Transform3D(-1, -7.57103e-08, -4.37114e-08, 0, -0.5, 0.866025, -8.74
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103476, 0.844083, -0.0377539)
 tracker = &"left_hand"
 
-[node name="LaserSword" parent="XROrigin3D/Left_Controller" instance=ExtResource("3_a8gxl")]
+[node name="LaserSword" parent="XROrigin3D/Left_Controller" instance=ExtResource("3_eflmq")]
 sword_color = Color(0.14902, 0, 0.960784, 1)
 
-[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/Left_Controller" instance=ExtResource("1_fhqvh")]
+[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/Left_Controller" instance=ExtResource("4_hh81q")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Right_Controller" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125492, 0.849016, -0.0393328)
 tracker = &"right_hand"
 
-[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/Right_Controller" instance=ExtResource("2_58r8u")]
+[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/Right_Controller" instance=ExtResource("5_57bjk")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="LaserSword" parent="XROrigin3D/Right_Controller" instance=ExtResource("3_a8gxl")]
+[node name="LaserSword" parent="XROrigin3D/Right_Controller" instance=ExtResource("3_eflmq")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i7o7x")
@@ -59,21 +59,22 @@ transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 
 
 [node name="Floor" type="MeshInstance3D" parent="WorldEnvironment"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-material_override = ExtResource("3_58r8u")
+material_override = ExtResource("6_llgbv")
 mesh = SubResource("PlaneMesh_i7o7x")
 skeleton = NodePath("../..")
 
 [node name="Cube Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600216, 0.0115206)
-script = ExtResource("7_4ovgj")
-cube_scene = ExtResource("8_1urvp")
+script = ExtResource("7_28dp7")
+cube_scene = ExtResource("8_0r0k0")
 
 [node name="Timer" type="Timer" parent="Cube Spawner"]
 autostart = true
 
 [node name="Killzone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
-script = ExtResource("9_ldj3p")
+collision_mask = 4
+script = ExtResource("9_x7ri8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Killzone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0683943, 14.1096, -0.881294)
