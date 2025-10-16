@@ -35,11 +35,11 @@ transform = Transform3D(-1, -7.57103e-08, -4.37114e-08, 0, -0.5, 0.866025, -8.74
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103476, 0.844083, -0.0377539)
 tracker = &"left_hand"
 
-[node name="LaserSword" parent="XROrigin3D/Left_Controller" instance=ExtResource("3_eflmq")]
-sword_color = Color(0.14902, 0, 0.960784, 1)
-
 [node name="OculusQuest2TouchController_Left" parent="XROrigin3D/Left_Controller" instance=ExtResource("4_hh81q")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="LaserSword" parent="XROrigin3D/Left_Controller" instance=ExtResource("3_eflmq")]
+sword_color = Color(0, 0, 1, 1)
 
 [node name="Right_Controller" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125492, 0.849016, -0.0393328)

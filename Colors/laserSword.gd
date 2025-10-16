@@ -18,7 +18,6 @@ func _ready() -> void:
 	line_renderer.material_override = mat
 	
 	add_to_group("swords")
-	print(name, " has been initialized and added to the 'swords' group.")
 	toggle_sword(false)
 
 func toggle_sword(state: bool) -> void:
