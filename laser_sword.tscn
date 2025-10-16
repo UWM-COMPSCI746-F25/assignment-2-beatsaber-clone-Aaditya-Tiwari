@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://be5cpsju4t80a"]
+
+[ext_resource type="Script" uid="uid://b34bne1fx6k37" path="res://Colors/laserSword.gd" id="1_bkiyg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkiyg"]
+radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ibi8"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.0
+
+[node name="LaserSword" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_bkiyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("CapsuleShape3D_bkiyg")
+
+[node name="LineRenderer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_8ibi8")

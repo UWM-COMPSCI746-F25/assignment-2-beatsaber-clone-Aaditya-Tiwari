@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8rxjqoyioci1"]
+
+[ext_resource type="Script" uid="uid://bt6600lqjuxd3" path="res://Colors/cube.gd" id="1_polvo"]
+[ext_resource type="AudioStream" uid="uid://c0btr87cga20f" path="res://beatsaberSound.wav" id="2_pf6vb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0jq6"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pf6vb"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Cube" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_polvo")
+hit_sound = ExtResource("2_pf6vb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_f0jq6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pf6vb")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
