@@ -13,7 +13,7 @@ Name: Aaditya Tiwari
 
 UWM Email: ftiwari@uwm.edu
 
-Third Party Assets:
+Third Party Assets: I used chatgpt to help my debug my problems with collision hitboxxing and my issues with my project unable to run on headset. 
 
 ## Getting Started
 
